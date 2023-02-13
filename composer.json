@@ -1,0 +1,62 @@
+{
+    "name": "mohamad-saleh/reviewable-model",
+    "description": "User review features for Laravel Application.",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "review",
+        "reviewable"
+    ],
+    "authors": [
+        {
+            "name": "Mohamad Mohamad Saleh"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^v9.51.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MohamadSaleh\\Reviewable\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MohamadSaleh\\Reviewable\\Tests\\": "tests"
+        }
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.4.4",
+        "phpunit/phpunit": "^9.6.3",
+        "orchestra/testbench": "^v7.22.0",
+        "brainmaestro/composer-git-hooks": "dev-master",
+        "laravel/pint": "^1.2"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ReviewServiceProvider"
+            ]
+        },
+        "hooks": {
+            "pre-commit": [
+                "composer fix-style"
+            ],
+            "pre-push": [
+                "composer test"
+            ]
+        }
+    },
+    "scripts": {
+        "post-merge": "composer install",
+        "check-style": "vendor/bin/pint --test",
+        "fix-style": "vendor/bin/pint",
+        "test": "vendor/bin/phpunit --colors=always"
+    },
+    "scripts-descriptions": {
+        "test": "Run all tests.",
+        "check-style": "Run style checks (only dry run - no fixing!).",
+        "fix-style": "Run style checks and fix violations."
+    }
+}
